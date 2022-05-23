@@ -5,5 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :alpacas
   has_many :bookings # as renter
-  # has_many :bookings, through: :alpacas # as owner
+  has_many :bookings_owner, through: :alpacas, source: :bookings # as owner
 end

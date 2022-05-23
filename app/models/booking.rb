@@ -1,5 +1,5 @@
 class Booking < ApplicationRecord
   belongs_to :alpaca
-  belongs_to :user # renter
-  # belongs_to :user, through: :alpaca # owner
+  belongs_to :renter, foreign_key: "user_id", class_name: "User" # renter
+  has_one :owner, through: :alpaca # owner
 end
