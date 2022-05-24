@@ -21,7 +21,16 @@ puts "-- generating alpacas --"
 10.times do
   a = Alpaca.new
   a.name = Faker::Name.unique.name
-  a.nick_name = a.name
+  a.nick_name = [
+    Faker::GreekPhilosophers.name,
+    Faker::Science.scientist,
+    Faker::Superhero.name,
+    Faker::Fantasy::Tolkien.character,
+    Faker::Creature::Dog.name,
+    Faker::Creature::Cat.name,
+    Faker::Movies::HarryPotter.character,
+    Faker::Games::Zelda.character
+  ].sample
   a.age = rand(1..17)
   a.price_per_day = rand(25..75)
   a.height = rand(81..99)
