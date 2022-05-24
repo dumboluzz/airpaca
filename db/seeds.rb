@@ -13,7 +13,7 @@ User.destroy_all
 
 puts "-- adding default users --"
 User.create(first_name: "Vincent", last_name: "Stuber", email: "vincent@stuber.com", password: "123456", password_confirmation: "123456")
-User.create(first_name: "Sopie", last_name: "Sorin", email: "sophie@sorin.com", password: "123456", password_confirmation: "123456")
+User.create(first_name: "Sophie", last_name: "Sorin", email: "sophie@sorin.com", password: "123456", password_confirmation: "123456")
 User.create(first_name: "Maria", last_name: "Pigazzi", email: "maria@pigazzi.com", password: "123456", password_confirmation: "123456")
 User.create(first_name: "Finn", last_name: "Stürenberg", email: "finn@stuerenberg.com", password: "123456", password_confirmation: "123456")
 
@@ -35,10 +35,10 @@ end
 puts "-- generating bookings --"
 20.times do
   b = Booking.new
-  b.start_date = Date.today + 1
-  b.end_date = Date.today + 5
+  b.start_date = Date.today + rand(1..3)
+  b.end_date = Date.today + rand(4..6)
   b.alpaca = Alpaca.order(Arel.sql('RANDOM()')).first
-  b.full_price = b.alpaca.price_per_day * 4
+  b.full_price = b.alpaca.price_per_day * (b.end_date - b.start_date).to_i
   b.renter = User.order(Arel.sql('RANDOM()')).first
   b.status = ["pending", "accepted", "rejected"].sample
   b.save
