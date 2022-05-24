@@ -2,16 +2,9 @@
   <h1>Alpacas</h1>
   <div class="row g-4 gx-4">
     <% @alpacas.each do |alpaca| %>
-    <div class="col-4">
-    <div class="card" style="">
-      <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=1920x10000:format=jpg/path/s613b7158c5cedfa2/image/ib0c72fe68831bc51/version/1645369295/image.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title"><%= alpaca.name %></h5>
-        <p class="card-text">Characteristics: height, weight, color, etccccccccccccc</p>
-        <a href="#" class="btn btn-primary">See details</a>
+      <div class="col-4">
+        <%= render "shared/alpaca_card", alpaca: alpaca %>
       </div>
-    </div>
-    </div>
     <% end %>
   </div>
 </div>
