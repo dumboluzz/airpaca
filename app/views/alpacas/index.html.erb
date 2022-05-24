@@ -1,0 +1,10 @@
+<div class="container">
+  <h1>Alpacas</h1>
+  <div class="row g-4 gx-4">
+    <% @alpacas.each do |alpaca| %>
+      <div class="col-4">
+        <%= render "shared/alpaca_card", alpaca: alpaca %>
+      </div>
+    <% end %>
+  </div>
+</div>
