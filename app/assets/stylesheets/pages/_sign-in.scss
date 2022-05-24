@@ -1,15 +1,18 @@
-.container {
-  background-color: #92B4EC;
+.login-container {
   display: flex;
   flex-direction: column;
-  width: 30%;
+  // width: 30%;
   padding: 40px 50px;
-  margin-top: 50px;
-  margin: auto;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  box-shadow: 2px 2px 1px #DCDCDC;
+  margin: 0 auto;
+  // margin-top: 50px;
+  // border: 1px solid #ccc;
+  // border-radius: 4px;
+  // box-sizing: border-box;
+  // box-shadow: 2px 2px 1px #DCDCDC;
+}
+
+.blue_color_class {
+  background-color: #92B4EC;
 }
 
 .log-in-text {
@@ -44,7 +47,7 @@
 }
 
 .form-links {
-  // display: flex;
+  display: flex;
   justify-content: space-evenly;
   margin: auto;
 }
