@@ -2,6 +2,8 @@ class AlpacasController < ApplicationController
   COLORS = ["white", "gray", "brown", "black"]
   WOOL_TYPES = ["Suri", "Huacaya"]
 
+  before_action :authenticate_user!, only: [:new, :create]
+
   def index
     @alpacas = Alpaca.all
   end
