@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+  get 'sessions/create'
+  get 'sessions/login'
+  get 'sessions/welcome'
   devise_for :users
   root to: 'pages#home'
   resources :alpacas, only: [:index, :show]
