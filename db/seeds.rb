@@ -15,7 +15,7 @@ puts "-- adding default users --"
 User.create(first_name: "Vincent", last_name: "Stuber", email: "vincent@stuber.com", password: "123456", password_confirmation: "123456")
 User.create(first_name: "Sophie", last_name: "Sorin", email: "sophie@sorin.com", password: "123456", password_confirmation: "123456")
 User.create(first_name: "Maria", last_name: "Pigazzi", email: "maria@pigazzi.com", password: "123456", password_confirmation: "123456")
-User.create(first_name: "Finn", last_name: "Stürenberg", email: "finn@stuerenberg.com", password: "123456", password_confirmation: "123456")
+User.create(first_name: "Finn", last_name: "Stürenburg", email: "finn@stuerenburg.com", password: "123456", password_confirmation: "123456")
 
 puts "-- generating alpacas --"
 10.times do
