@@ -1,20 +1,13 @@
 <div class="card-alpaca">
-  <%# <img src="" /> %>
-  <div class="card-alpaca-infos">
-    <div>
-      <h2></h2>
-      <p>Hello! My nickname is <%= @alpaca.nick_name %></p>
-      <p>I'm <%= @alpaca.color %> and would like to get hired by you.</p>
-      <p>But I need my personal space.</p>
-    </div>
-  </div>
 
-<div class="container">
+<div class="container text-center">
   <div class="card border-0 m-auto" style="width: 40%;">
     <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" class="card-img-top rounded-top" alt="...">
     <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <h3 class="card-title"><%= @alpaca.name %></h3>
+      <p class="card-text">Hello! My nickname is <%= @alpaca.nick_name %></p>
+      <p>I'm <%= @alpaca.color %> and would like to get hired by you.</p>
+      <p>But I need my personal space.</p>
       <table class="table">
         <thead>
           <tr>
