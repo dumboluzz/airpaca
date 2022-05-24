@@ -35,8 +35,8 @@ puts "-- generating alpacas --"
   a.price_per_day = rand(25..75)
   a.height = rand(81..99)
   a.weight = rand(48..84)
-  a.color = ["white", "gray", "brown", "black"].sample
-  a.wool_type = ["Suri", "Huacaya"].sample
+  a.color = AlpacasController::COLORS.sample
+  a.wool_type = AlpacasController::WOOL_TYPES.sample
   a.owner = User.order(Arel.sql('RANDOM()')).first
   a.save
 end
