@@ -1,12 +1,20 @@
-
-
-<div class="home-banner" style="background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), <%= asset_path ('3alpacas.jpg') %>">
-  <div class="homepage-container">
-    <div class="text-content">
-      <h1>Alpacas bring <strong>joy</strong> to your life!</h1>
-      <p>Rent one of our alpacas and enjoy a great day with one of our cute friends.</p>
+<div class="banner mb-5">
+  <div class="d-flex align-items-center justify-content-center">
+    <div class="mt-5">
+      <h1>Alpacas bring <strong>joy</strong> to <strong>your life!</strong></h1>
       <br>
-      <a class="btn btn-primary" href="#">Checkout our Alpacas</a>
+      <p><span>Rent one of our alpacas and enjoy a great day with one of our cute friends.</span></p>
+      <%= link_to "Book Alpacas", alpacas_path, class: "btn btn-lg btn-info text-muted fs-2" %>
     </div>
+  </div>
+</div>
+<div class="container">
+  <h1>Our top alpacas:</h1>
+  <div class="row g-4 gx-4">
+    <% @alpacas.each do |alpaca| %>
+      <div class="col-4">
+        <%= render "shared/alpaca_card", alpaca: alpaca %>
+      </div>
+    <% end %>
   </div>
 </div>
