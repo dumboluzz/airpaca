@@ -1,0 +1,12 @@
+<div class="card border-0" style="">
+  <% if alpaca.photos.attached? %>
+    <%= cl_image_tag alpaca.photos.first.key, class: "card-img-top" %>
+  <% else %>
+    <img src="https://i.imgflip.com/6hf6ez.jpg" class="card-img-top">
+  <% end %>
+  <div class="card-body">
+    <h5 class="card-title"><%= alpaca.name %></h5>
+    <p class="card-text">Stats: <%= alpaca.height %> cm, <%= alpaca.weight %> kg, <%= alpaca.color %>, etc.</p>
+    <%= link_to "See details", alpaca_path(alpaca), class: "btn btn-outline-primary" %>
+  </div>
+</div>
