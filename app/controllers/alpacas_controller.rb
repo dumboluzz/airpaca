@@ -1,7 +1,4 @@
 class AlpacasController < ApplicationController
-  WOOL_TYPES = ["Suri", "Huacaya"]
-  COLORS = ["white", "gray", "brown", "black"]
-
   before_action :set_alpaca, only: [:show]
   before_action :authenticate_user!, only: [:new, :create]
 
