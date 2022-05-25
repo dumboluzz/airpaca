@@ -8,5 +8,7 @@ Rails.application.routes.draw do
   resources :alpacas, only: [:index, :show, :new, :create]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  resources :alpacas, only: [:show]
+  resources :alpacas, only: [:show] do
+    resources :bookings, only: [:create]
+  end
 end
