@@ -1,7 +1,4 @@
 class AlpacasController < ApplicationController
-  WOOL_TYPES = ["Suri", "Huacaya"]
-  COLORS = ["white", "gray", "brown", "black"]
-
   before_action :set_alpaca, only: [:show]
   before_action :authenticate_user!, only: [:new, :create]
 
@@ -33,7 +30,7 @@ class AlpacasController < ApplicationController
   end
 
   def alpaca_params
-    params.require(:alpaca).permit(:name, :nick_name, :age, :price_per_day,
+    params.require(:alpaca).permit(:name, :nick_name, :age, :price_per_day, :address,
                                    :height, :weight, :color, :wool_type, photos: [])
   end
 end
