@@ -1,11 +1,15 @@
 class AlpacasController < ApplicationController
-  COLORS = ["white", "gray", "brown", "black"]
   WOOL_TYPES = ["Suri", "Huacaya"]
+  COLORS = ["white", "gray", "brown", "black"]
 
+  before_action :set_alpaca, only: [:show]
   before_action :authenticate_user!, only: [:new, :create]
 
   def index
     @alpacas = Alpaca.all
+  end
+
+  def show
   end
 
   def new
@@ -23,6 +27,10 @@ class AlpacasController < ApplicationController
   end
 
   private
+
+  def set_alpaca
+    @alpaca = Alpaca.find(params[:id])
+  end
 
   def alpaca_params
     params.require(:alpaca).permit(:name, :nick_name, :age, :price_per_day,
