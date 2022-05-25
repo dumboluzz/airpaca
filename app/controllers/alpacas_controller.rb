@@ -8,6 +8,7 @@ class AlpacasController < ApplicationController
 
   def show
     @booking = Booking.new
+    @markers = [{ lat: @alpaca.latitude, lng: @alpaca.longitude }]
   end
 
   def new
