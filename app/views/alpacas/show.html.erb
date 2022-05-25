@@ -72,7 +72,12 @@
         </div>
       </div>
       <div class="card border-0 m-auto col-lg-6 col-sx-8 mt-4">
-        <div class="card border-0 bg-dark col-6 mt-4 m-auto">
+        <div style="width: 100%; height: 600px;"
+          data-controller="mapbox"
+          data-mapbox-markers-value="<%= @markers.to_json %>"
+          data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+        <%# <div class="card border-0 bg-dark col-6 mt-4 m-auto">
           <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png" class="card-img rounded" alt="...">
           <div class="card-img-overlay d-flex justify-content-center align-items-center">
             <h5 class="text-white">Eating Grass</h5>
@@ -83,7 +88,7 @@
           <div class="card-img-overlay d-flex justify-content-center align-items-center">
             <h5 class="text-white">Producing Wool</h5>
           </div>
-        </div>
+        </div> %>
       </div>
     </div>
     <div class="bg-white p-3 sticky-top m-auto col-lg-3 mt-3">
