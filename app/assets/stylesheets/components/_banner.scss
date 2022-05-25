@@ -1,0 +1,29 @@
+.banner {
+  width: auto;
+  height: 700px;
+  background-image: asset_url("3alpacas.jpg");
+  background-size: cover;
+
+  h1 {
+    color: white;
+    font-size: 5rem;
+  }
+
+  p {
+    color: white;
+    font-size: 2rem;
+  }
+}
+
+.banner-text {
+  padding-top: 90px;
+  text-align: center;
+}
+
+.container {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  h1 {
+   text-align: center;
+  }
+}
