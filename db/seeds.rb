@@ -38,34 +38,9 @@ puts "-- generating alpacas --"
   a.color = Alpaca::COLORS.sample
   a.wool_type = Alpaca::WOOL_TYPES.sample
   a.owner = User.order(Arel.sql('RANDOM()')).first
+  a.address = Faker::Address.city
   a.save
 end
-
-a = Alpaca.new
-a.name = "Oldman"
-a.nick_name = "Opa"
-a.age = 40
-a.price_per_day = 56
-a.height = 89
-a.weight = 78
-a.color = "gray"
-a.wool_type = "suri"
-a.address = "balanstrasse 74 Munich"
-a.owner = User.order(Arel.sql('RANDOM()')).first
-a.save
-
-a = Alpaca.new
-a.name = "Joe"
-a.nick_name = "Jojo"
-a.age = 40
-a.price_per_day = 56
-a.height = 89
-a.weight = 78
-a.color = "gray"
-a.wool_type = "suri"
-a.address = "3103 Broadway, New York, NY 10027, USA"
-a.owner = User.order(Arel.sql('RANDOM()')).first
-a.save
 
 puts "-- generating bookings --"
 20.times do
