@@ -1,9 +1,26 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/">
-      <%= image_tag "alpaca.png" %>
-    </a>
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon sticky-top">
+  <div class="container-fluid row mx-0">
+    <div class="col-4">
+      <a class="navbar-brand" href="/">
+        <%= image_tag "alpaca.png" %>
+      </a>
+    </div>
+    <div class="col-4">
+      <% unless current_page?(root_path) %>
+        <div>
+        <%= form_tag alpacas_path, class: "d-flex", method: :get do %>
+                <%= text_field_tag :query,
+                  params[:query],
+                  class: "form-control me-2",
+                  placeholder: "Put your address here"
+                %>
 
+              <%= submit_tag "Search", class: "btn btn-primary" %>
+        <% end %>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-4 d-flex justify-content-end">
     <% if user_signed_in? %>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -41,5 +58,6 @@
         </ul>
       </div>
     <% end %>
+    </div>
   </div>
 </div>

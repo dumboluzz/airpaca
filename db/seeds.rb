@@ -38,6 +38,7 @@ puts "-- generating alpacas --"
   a.color = Alpaca::COLORS.sample
   a.wool_type = Alpaca::WOOL_TYPES.sample
   a.owner = User.order(Arel.sql('RANDOM()')).first
+  a.address = Faker::Address.city
   a.save
 end
 

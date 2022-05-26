@@ -3,7 +3,17 @@ class AlpacasController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
 
   def index
-    @alpacas = Alpaca.all
+    if params[:query].present?
+      @alpacas = Alpaca.search_by_city(params[:query])
+    else
+      @alpacas = Alpaca.all
+    end
+    @markers = @alpacas.geocoded.map do |alpaca|
+      {
+        lat: alpaca.latitude,
+        lng: alpaca.longitude
+      }
+    end
   end
 
   def show
