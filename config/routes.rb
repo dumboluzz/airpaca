@@ -12,5 +12,8 @@ Rails.application.routes.draw do
     resources :bookings, only: [:create]
   end
 
-  resources :bookings, only: [:index]
+  resources :bookings, only: [:index] do
+    get "accept", to: "bookings#accept"
+    get "reject", to: "bookings#reject"
+  end
 end

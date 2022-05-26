@@ -24,10 +24,10 @@
         </div>
         <% if booking.status == "pending" %>
           <div class="col-2 text-end">
-            <a href="#" class="btn btn-success btn-lg d-inline text-light">Accept</a>
+            <%= link_to "Accept", booking_accept_path(booking), class: "btn btn-success btn-lg d-inline text-light" %>
           </div>
           <div class="col-2">
-            <a href="#" class="btn btn-danger btn-lg d-inline text-light">Decline</a>
+            <%= link_to "Reject", booking_reject_path(booking), class: "btn btn-danger btn-lg d-inline text-light" %>
           </div>
         <% else %>
           <div class="col-4 text-center">

@@ -1,10 +1,11 @@
 class BookingsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_alpaca, only: [:create]
+  before_action :set_booking, only: [:accept, :reject]
 
   def index
     @pending = current_user.owner_bookings.where(status: "pending").order(:start_date)
-    @history = current_user.owner_bookings.where.not(status: "pending").order(:updated_at)
+    @history = current_user.owner_bookings.where.not(status: "pending").order(updated_at: :desc)
   end
 
   def create
@@ -28,7 +29,23 @@ class BookingsController < ApplicationController
     end
   end
 
+  def accept
+    @booking.status = "accepted"
+    @booking.save
+    redirect_to bookings_path
+  end
+
+  def reject
+    @booking.status = "rejected"
+    @booking.save
+    redirect_to bookings_path
+  end
+
   private
+
+  def set_booking
+    @booking = Booking.find(params[:booking_id])
+  end
 
   def set_alpaca
     @alpaca = Alpaca.find(params[:alpaca_id])
