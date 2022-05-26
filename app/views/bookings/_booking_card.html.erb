@@ -1,0 +1,52 @@
+<div class="card booking-card mb-3 shadow">
+  <div class="d-flex align-items-center">
+    <div class="me-3">
+      <% if booking.alpaca.photos.attached? %>
+        <%= cl_image_tag booking.alpaca.photos.first.key, class: "img-fluid" %>
+      <% else %>
+        <img src="https://i.imgflip.com/6hf6ez.jpg" class="img-fluid">
+      <% end %>
+    </div>
+    <div class="flex-grow-1">
+      <div class="card-body row align-items-center fs-5">
+        <div class="col-2 d-flex flex-column align-items-end">
+          <div>From: <%= booking.start_date.strftime("%d.%m.%Y") %></div>
+          <div>To: <%= booking.end_date.strftime("%d.%m.%Y") %></div>
+        </div>
+        <div class="col-1 text-end">
+          <strong><%= booking.full_price %></strong>€
+        </div>
+        <div class="col-3 text-truncate">
+          <%= booking.alpaca.name %>
+        </div>
+        <div class="col-2 text-truncate">
+          <%= booking.renter.first_name.capitalize %> <%= booking.renter.last_name.capitalize %>
+        </div>
+        <% if booking.status == "pending" %>
+          <% if booking.owner == current_user %>
+            <div class="col-2 text-end">
+              <%= link_to "Accept", booking_accept_path(booking), class: "btn btn-success btn-lg d-inline text-light" %>
+            </div>
+            <div class="col-2">
+              <%= link_to "Reject", booking_reject_path(booking), class: "btn btn-danger btn-lg d-inline text-light" %>
+            </div>
+          <% else %>
+            <div class="col-4 text-center d-flex align-items-center justify-content-center">
+              <div class="spinner-grow me-3" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <strong>Pending...</strong>
+            </div>
+          <% end %>
+        <% else %>
+          <div class="col-4 text-center">
+            <strong class="<%= booking.status == "accepted" ? "text-success" : "text-danger" %>">
+              <%= booking.status.capitalize %>
+            </strong>
+             on <%= booking.updated_at.strftime("%d.%m.%Y") %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
