@@ -4,8 +4,10 @@ class BookingsController < ApplicationController
   before_action :set_booking, only: [:accept, :reject]
 
   def index
-    @pending = current_user.owner_bookings.where(status: "pending").order(:start_date)
-    @history = current_user.owner_bookings.where.not(status: "pending").order(updated_at: :desc)
+    @pending = current_user.bookings.where(status: "pending").order(:start_date)
+    @history = current_user.bookings.where.not(status: "pending").order(updated_at: :desc)
+    @owner_pending = current_user.owner_bookings.where(status: "pending").order(:start_date)
+    @owner_history = current_user.owner_bookings.where.not(status: "pending").order(updated_at: :desc)
   end
 
   def create

@@ -23,12 +23,21 @@
           <%= booking.renter.first_name.capitalize %> <%= booking.renter.last_name.capitalize %>
         </div>
         <% if booking.status == "pending" %>
-          <div class="col-2 text-end">
-            <%= link_to "Accept", booking_accept_path(booking), class: "btn btn-success btn-lg d-inline text-light" %>
-          </div>
-          <div class="col-2">
-            <%= link_to "Reject", booking_reject_path(booking), class: "btn btn-danger btn-lg d-inline text-light" %>
-          </div>
+          <% if booking.owner == current_user %>
+            <div class="col-2 text-end">
+              <%= link_to "Accept", booking_accept_path(booking), class: "btn btn-success btn-lg d-inline text-light" %>
+            </div>
+            <div class="col-2">
+              <%= link_to "Reject", booking_reject_path(booking), class: "btn btn-danger btn-lg d-inline text-light" %>
+            </div>
+          <% else %>
+            <div class="col-4 text-center d-flex align-items-center justify-content-center">
+              <div class="spinner-grow me-3" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <strong>Pending...</strong>
+            </div>
+          <% end %>
         <% else %>
           <div class="col-4 text-center">
             <strong class="<%= booking.status == "accepted" ? "text-success" : "text-danger" %>">

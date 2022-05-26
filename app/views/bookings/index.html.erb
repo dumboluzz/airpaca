@@ -1,10 +1,33 @@
 <div class="container">
-  <h1 class="mt-5 mb-3">Pending</h1>
-  <% @pending.each do |booking| %>
-    <%= render "booking_card", booking: booking %>
-  <% end %>
-  <h1 class="mt-5 mb-3">History</h1>
-  <% @history.each do |booking| %>
-    <%= render "booking_card", booking: booking %>
-  <% end %>
+  <ul class="nav nav-pills nav-justified mt-5">
+    <li class="nav-item active">
+      <button class="nav-link active" id="renter-tab" data-bs-toggle="tab" data-bs-target="#renter-tab-pane" type="button" role="tab" aria-controls="renter-tab-pane" aria-selected="true">Renter</button>
+    </li>
+    <li class="nav-item">
+      <button class="nav-link" id="owner-tab" data-bs-toggle="tab" data-bs-target="#owner-tab-pane" type="button" role="tab" aria-controls="owner-tab-pane" aria-selected="true">Owner</button>
+    </li>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="renter-tab-pane" role="tabpanel" aria-labelledby="renter-tab" tabindex="0">
+      <h1 class="mt-5">Pending</h1>
+      <% @pending.each do |booking| %>
+        <%= render "booking_card", booking: booking %>
+      <% end %>
+      <h1 class="mt-5 mb-3">History</h1>
+      <% @history.each do |booking| %>
+        <%= render "booking_card", booking: booking %>
+      <% end %>
+    </div>
+    <div class="tab-pane fade" id="owner-tab-pane" role="tabpanel" aria-labelledby="owner-tab" tabindex="0">
+      <h1 class="mt-5">Pending</h1>
+      <% @owner_pending.each do |booking| %>
+        <%= render "booking_card", booking: booking %>
+      <% end %>
+      <h1 class="mt-5 mb-3">History</h1>
+      <% @owner_history.each do |booking| %>
+        <%= render "booking_card", booking: booking %>
+      <% end %>
+    </div>
+  </div>
 </div>
