@@ -3,4 +3,8 @@
   <% @pending.each do |booking| %>
     <%= render "booking_card", booking: booking %>
   <% end %>
+  <h1 class="mt-5 mb-3">History</h1>
+  <% @history.each do |booking| %>
+    <%= render "booking_card", booking: booking %>
+  <% end %>
 </div>

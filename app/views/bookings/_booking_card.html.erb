@@ -9,25 +9,34 @@
     </div>
     <div class="flex-grow-1">
       <div class="card-body row align-items-center fs-5">
-        <div class="col-3">
-          <div>From: <%= booking.start_date %></div>
-          <div>To: <%= booking.end_date %></div>
+        <div class="col-2 d-flex flex-column align-items-end">
+          <div>From: <%= booking.start_date.strftime("%d.%m.%Y") %></div>
+          <div>To: <%= booking.end_date.strftime("%d.%m.%Y") %></div>
         </div>
         <div class="col-1 text-end">
-          <%= booking.full_price %>€
+          <strong><%= booking.full_price %></strong>€
         </div>
-        <div class="col-2">
+        <div class="col-3 text-truncate">
           <%= booking.alpaca.name %>
         </div>
-        <div class="col-2">
+        <div class="col-2 text-truncate">
           <%= booking.renter.first_name.capitalize %> <%= booking.renter.last_name.capitalize %>
         </div>
-        <div class="col-2 text-end">
-          <a href="#" class="btn btn-success btn-lg d-inline text-light">Accept</a>
-        </div>
-        <div class="col-2">
-          <a href="#" class="btn btn-danger btn-lg d-inline text-light">Decline</a>
-        </div>
+        <% if booking.status == "pending" %>
+          <div class="col-2 text-end">
+            <a href="#" class="btn btn-success btn-lg d-inline text-light">Accept</a>
+          </div>
+          <div class="col-2">
+            <a href="#" class="btn btn-danger btn-lg d-inline text-light">Decline</a>
+          </div>
+        <% else %>
+          <div class="col-4 text-center">
+            <strong class="<%= booking.status == "accepted" ? "text-success" : "text-danger" %>">
+              <%= booking.status.capitalize %>
+            </strong>
+             on <%= booking.updated_at.strftime("%d.%m.%Y") %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

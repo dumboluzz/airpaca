@@ -4,6 +4,7 @@ class BookingsController < ApplicationController
 
   def index
     @pending = current_user.owner_bookings.where(status: "pending").order(:start_date)
+    @history = current_user.owner_bookings.where.not(status: "pending").order(:updated_at)
   end
 
   def create
