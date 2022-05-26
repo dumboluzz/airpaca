@@ -1,10 +1,21 @@
-<div class="container">
-  <h1>Alpacas</h1>
-  <div class="row g-4 gx-4">
-    <% @alpacas.each do |alpaca| %>
-      <div class="col-4">
-        <%= render "shared/alpaca_card", alpaca: alpaca %>
-      </div>
-    <% end %>
+<div class="row">
+
+  <%# <br> %>
+  <div class="col-6 row g-4 mt-0 ms-2">
+      <% @alpacas.each do |alpaca| %>
+        <div class="col-6">
+          <%= render "shared/alpaca_card", alpaca: alpaca %>
+        </div>
+      <% end %>
   </div>
+  <div class="col-6">
+    <div class="sticky-map" style="width: 100% ; height: 90vh;"
+      data-controller="mapbox"
+      data-mapbox-markers-value="<%= @markers.to_json %>"
+      data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  </div>
+<%#   <div class="col-6 d-flex justify-content-around"> %>
+
+
 </div>
