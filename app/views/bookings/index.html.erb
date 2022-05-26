@@ -1,0 +1,6 @@
+<div class="container">
+  <h1 class="mt-5 mb-3">Pending</h1>
+  <% @pending.each do |booking| %>
+    <%= render "booking_card", booking: booking %>
+  <% end %>
+</div>

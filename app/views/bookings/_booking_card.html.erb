@@ -1,0 +1,34 @@
+<div class="card booking-card mb-3 shadow">
+  <div class="d-flex align-items-center">
+    <div class="me-3">
+      <% if booking.alpaca.photos.attached? %>
+        <%= cl_image_tag booking.alpaca.photos.first.key, class: "img-fluid" %>
+      <% else %>
+        <img src="https://i.imgflip.com/6hf6ez.jpg" class="img-fluid">
+      <% end %>
+    </div>
+    <div class="flex-grow-1">
+      <div class="card-body row align-items-center fs-5">
+        <div class="col-3">
+          <div>From: <%= booking.start_date %></div>
+          <div>To: <%= booking.end_date %></div>
+        </div>
+        <div class="col-1 text-end">
+          <%= booking.full_price %>€
+        </div>
+        <div class="col-2">
+          <%= booking.alpaca.name %>
+        </div>
+        <div class="col-2">
+          <%= booking.renter.first_name.capitalize %> <%= booking.renter.last_name.capitalize %>
+        </div>
+        <div class="col-2 text-end">
+          <a href="#" class="btn btn-success btn-lg d-inline text-light">Accept</a>
+        </div>
+        <div class="col-2">
+          <a href="#" class="btn btn-danger btn-lg d-inline text-light">Decline</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

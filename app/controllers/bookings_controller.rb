@@ -1,6 +1,10 @@
 class BookingsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_alpaca
+  before_action :set_alpaca, only: [:create]
+
+  def index
+    @pending = current_user.owner_bookings.where(status: "pending").order(:start_date)
+  end
 
   def create
     @booking = Booking.new(booking_params)
