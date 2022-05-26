@@ -25,7 +25,7 @@ class BookingsController < ApplicationController
       @booking.full_price = duration * @alpaca.price_per_day
     end
     if @booking.save
-      redirect_to alpaca_path(@alpaca), notice: "Booking successfull"
+      redirect_to bookings_path, notice: "Booking successfull"
     else
       render "alpacas/show"
     end
