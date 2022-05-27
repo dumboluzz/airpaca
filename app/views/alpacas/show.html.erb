@@ -36,7 +36,7 @@
         <div class="card border-0 m-auto col-sx-8 mt-3 shadow">
           <div class="card-body">
             <h5 class="card-title"><%= @alpaca.name %></h5>
-            <p class="card-text">My nickname is <%= @alpaca.nick_name %>. I would like to get hired by you, but I need my personal space.</p>
+            <p class="card-text"><%= @alpaca.description %></p>
             <table class="table">
               <thead>
                 <tr>
@@ -99,7 +99,6 @@
         </div>
       </div>
       <div class="bg-white p-3 sticky-date-picker m-auto col-lg-4 mt-3 rounded shadow">
-
         <div class="d-flex justify-content-between mt-3">
           <p><strong>Price per Day</strong></p>
           <p><%= @alpaca.price_per_day%>€</p>

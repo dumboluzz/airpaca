@@ -9,6 +9,11 @@
   border-radius: 0.5em;
 }
 
+a.card_links {
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
 a.card_links:hover {
   color:#57B8FF !important;
 }

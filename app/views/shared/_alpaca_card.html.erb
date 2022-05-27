@@ -1,4 +1,4 @@
-<%= link_to alpaca_path(alpaca), :class => "card_links" do %>
+<%= link_to alpaca_path(alpaca), :class => "card_links text-dark" do %>
   <div class="card card-alpaca border-0 shadow" style="">
     <% if alpaca.photos.attached? %>
       <%= cl_image_tag alpaca.photos.first.key, class: "card-img-top card-alpaca-img", crop: :thumb, gravity: :face %>
@@ -7,7 +7,7 @@
     <% end %>
     <div class="card-body">
       <h5 class="card-title text-truncate"><%= alpaca.name %></h5>
-      <p class="card-text text-truncate">Stats: <%= alpaca.height %> cm, <%= alpaca.weight %> kg, <%= alpaca.color %>, etc.</p>
+      <p class="card-text text-truncate"><%= alpaca.description %></p>
     </div>
   </div>
 <% end %>

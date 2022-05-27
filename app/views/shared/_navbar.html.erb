@@ -1,11 +1,12 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon sticky-top">
   <div class="container-fluid row mx-0">
-    <div class="col-4">
+    <div class="col-3">
       <a class="navbar-brand" href="/">
         <%= image_tag "alpaca.png" %>
       </a>
     </div>
-    <div class="col-4">
+    <div class="col-6">
+
       <% unless current_page?(root_path) %>
           <%= form_tag alpacas_path, class: "d-flex", method: :get do %>
             <div class="input-group">
@@ -22,7 +23,7 @@
           <% end %>
       <% end %>
     </div>
-    <div class="col-4 d-flex justify-content-end">
+    <div class="col-3 d-flex justify-content-end">
     <% if user_signed_in? %>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
