@@ -12,6 +12,11 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
+    unless @booking.start_date && @booking.end_date
+      flash.alert = "Enter your dates"
+      render "alpacas/show"
+      return
+    end
     @booking.alpaca = @alpaca
     @booking.renter = current_user
     duration = (@booking.end_date - @booking.start_date).to_i
