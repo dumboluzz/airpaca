@@ -3,9 +3,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :alpacas
-  has_many :bookings # as renter
-  has_many :owner_bookings, through: :alpacas, source: :bookings # as owner
   validates :first_name, presence: true
   validates :last_name, presence: true
+  has_many :alpacas, dependent: :destroy
+  has_many :bookings, dependent: :destroy # as renter
+  has_many :owner_bookings, through: :alpacas, source: :bookings, dependent: :destroy # as owner
 end
