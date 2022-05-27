@@ -1,8 +1,8 @@
-<%# <div class="pattern"> %>
+<div class="pattern">
   <div class="container">
     <div class="row">
       <div class="col-lg-8 ">
-        <div class="card border-0 m-auto col-sx-8 mt-3">
+        <div class="card border-0 m-auto col-sx-8 mt-3 shadow">
           <div id="carouselExampleIndicators" class="carousel slide shadow" data-bs-ride="true">
             <div class="carousel-inner">
               <% if @alpaca.photos.attached? %>
@@ -32,7 +32,8 @@
               </button>
             <% end %>
           </div>
-
+        </div>
+        <div class="card border-0 m-auto col-sx-8 mt-3 shadow">
           <div class="card-body">
             <h5 class="card-title"><%= @alpaca.name %></h5>
             <p class="card-text">My nickname is <%= @alpaca.nick_name %>. I would like to get hired by you, but I need my personal space.</p>
@@ -77,8 +78,8 @@
             </table>
           </div>
         </div>
-        <div class="card border-0 m-auto mt-3 shadow">
-          <div style="width: 100%; height: 600px;"
+        <div class="card border-0 m-auto mt-3 mb-5 shadow">
+          <div class="rounded " style="width: 100%; height: 600px;"
             data-controller="mapbox"
             data-mapbox-markers-value="<%= @markers.to_json %>"
             data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
@@ -97,7 +98,7 @@
           </div> %>
         </div>
       </div>
-      <div class="bg-white p-3 sticky-date-picker m-auto col-lg-4 mt-3">
+      <div class="bg-white p-3 sticky-date-picker m-auto col-lg-4 mt-3 rounded shadow">
 
         <div class="d-flex justify-content-between mt-3">
           <p><strong>Price per Day</strong></p>
@@ -108,4 +109,4 @@
       </div>
     </div>
   </div>
-<%# </div> %>
+</div>
