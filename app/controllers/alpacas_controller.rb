@@ -62,7 +62,7 @@ class AlpacasController < ApplicationController
   end
 
   def alpaca_params
-    params.require(:alpaca).permit(:name, :nick_name, :age, :price_per_day, :address,
+    params.require(:alpaca).permit(:name, :nick_name, :age, :description, :price_per_day, :address,
                                    :height, :weight, :color, :wool_type, photos: [])
   end
 end
