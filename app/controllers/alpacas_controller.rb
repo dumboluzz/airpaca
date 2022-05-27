@@ -1,5 +1,5 @@
 class AlpacasController < ApplicationController
-  before_action :set_alpaca, only: [:show]
+  before_action :set_alpaca, only: [:show, :edit, :update ]
   before_action :authenticate_user!, only: [:new, :create]
 
   def index
@@ -32,6 +32,19 @@ class AlpacasController < ApplicationController
       redirect_to alpaca_path(@alpaca)
     else
       render :new
+    end
+  end
+
+  def edit
+
+  end
+
+  def update
+    @alpaca.update(alpaca_params)
+    if @alpaca.save
+      redirect_to alpaca_path(@alpaca)
+    else
+      render :edit
     end
   end
 

@@ -1,0 +1,20 @@
+<h1>Edit your alpaca!</h1>
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <%= simple_form_for @alpaca do |f| %>
+        <%= f.input :name %>
+        <%= f.input :nick_name %>
+        <%= f.input :age %>
+        <%= f.input :address %>
+        <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+        <%= f.input :price_per_day %>
+        <%= f.input :height %>
+        <%= f.input :weight %>
+        <%= f.input :color, collection: Alpaca::COLORS, as: :select %>
+        <%= f.input :wool_type, collection: Alpaca::WOOL_TYPES, as: :select %>
+        <%= f.button :submit, class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
