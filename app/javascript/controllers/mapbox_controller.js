@@ -15,15 +15,22 @@ export default class extends Controller {
       style: "mapbox://styles/mapbox/streets-v10"
     })
 
+    this.map.setMaxZoom(15)
+
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
   }
 
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
-      new mapboxgl.Marker()
+      const customMarker = document.createElement("a");
+      customMarker.className = "marker";
+      customMarker.href = marker.href;
+      customMarker.style.backgroundImage = `url('${marker.img}')`;
+
+      new mapboxgl.Marker(customMarker)
         .setLngLat([ marker.lng, marker.lat ])
-        .addTo(this.map)
+        .addTo(this.map);
     });
   }
 
