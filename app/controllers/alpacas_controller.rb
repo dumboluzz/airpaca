@@ -4,7 +4,7 @@ class AlpacasController < ApplicationController
 
   def index
     if params[:query].present?
-      @alpacas = Alpaca.search_by_city(params[:query])
+      @alpacas = Alpaca.near(params[:query], params[:radius].present? ? params[:radius] : 50)
     else
       @alpacas = Alpaca.all
     end
