@@ -1,109 +1,111 @@
-<div class="container">
-  <div class="d-flex justify-content-around">
-    <div>
-      <div class="card border-0 m-auto col-lg-6 col-sx-8">
-        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
-          <div class="carousel-inner">
-            <% if @alpaca.photos.attached? %>
-              <% @alpaca.photos.each_with_index do |photo, index| %>
-                <div class="carousel-item <%= index == 0 ? 'active' : '' %>">
-                  <%= cl_image_tag photo.key, class: "card-img-top d-block w-100" %>
+<%# <div class="pattern"> %>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 ">
+        <div class="card border-0 m-auto col-sx-8 mt-3">
+          <div id="carouselExampleIndicators" class="carousel slide shadow" data-bs-ride="true">
+            <div class="carousel-inner">
+              <% if @alpaca.photos.attached? %>
+                <% @alpaca.photos.each_with_index do |photo, index| %>
+                  <div class="carousel-item <%= index == 0 ? 'active' : '' %>">
+                    <%= cl_image_tag photo.key, class: "card-img-top card-img-bottom d-block w-100" %>
+                  </div>
+                <% end %>
+              <% else %>
+                <div class="carousel-item active">
+                  <img src="https://i.imgflip.com/6hf6ez.jpg" class="card-img-top card-img-bottom d-block w-100">
                 </div>
               <% end %>
-            <% else %>
-              <div class="carousel-item active">
-                <img src="https://i.imgflip.com/6hf6ez.jpg" class="card-img-top d-block w-100">
+            </div>
+            <% if @alpaca.photos.attached? && @alpaca.photos.length > 1%>
+              <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
               </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
             <% end %>
           </div>
-          <% if @alpaca.photos.attached? && @alpaca.photos.length > 1%>
-            <div class="carousel-indicators">
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+
+          <div class="card-body">
+            <h5 class="card-title"><%= @alpaca.name %></h5>
+            <p class="card-text">My nickname is <%= @alpaca.nick_name %>. I would like to get hired by you, but I need my personal space.</p>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Age</th>
+                  <td> <%= @alpaca.age %> years </td>
+                </tr>
+                <tr>
+                  <th scope="row">Weight</th>
+                  <td> <%= @alpaca.weight %> kg</td>
+                </tr>
+                <tr>
+                  <th scope="row">Height</th>
+                  <td> <%= @alpaca.height %> cm</td>
+                </tr>
+                <tr>
+                  <th scope="row">Wool Type</th>
+                  <td> <%= @alpaca.wool_type %> </td>
+                </tr>
+                <tr>
+                  <th scope="row">Color</th>
+                  <td> <%= @alpaca.color %> </td>
+                </tr>
+                <tr>
+                  <th scope="row">Owner</th>
+                  <td><%= @alpaca.owner.first_name %> <%= @alpaca.owner.last_name  %></td>
+                </tr>
+                <% if @alpaca.owner == current_user %>
+                <tr>
+                  <th scope="row"><%= link_to "Edit",  edit_alpaca_path(@alpaca)%></th>
+                </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card border-0 m-auto mt-3 shadow">
+          <div style="width: 100%; height: 600px;"
+            data-controller="mapbox"
+            data-mapbox-markers-value="<%= @markers.to_json %>"
+            data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+          </div>
+          <%# <div class="card border-0 bg-dark col-6 mt-4 m-auto">
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png" class="card-img rounded" alt="...">
+            <div class="card-img-overlay d-flex justify-content-center align-items-center">
+              <h5 class="text-white">Eating Grass</h5>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
-          <% end %>
-        </div>
-
-        <div class="card-body">
-          <h5 class="card-title"><%= @alpaca.name %></h5>
-          <p class="card-text">My nickname is <%= @alpaca.nick_name %>. I would like to get hired by you, but I need my personal space.</p>
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col"></th>
-                <th scope="col"></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Age</th>
-                <td> <%= @alpaca.age %> years </td>
-              </tr>
-              <tr>
-                <th scope="row">Weight</th>
-                <td> <%= @alpaca.weight %> kg</td>
-              </tr>
-              <tr>
-                <th scope="row">Height</th>
-                <td> <%= @alpaca.height %> cm</td>
-              </tr>
-              <tr>
-                <th scope="row">Wool Type</th>
-                <td> <%= @alpaca.wool_type %> </td>
-              </tr>
-              <tr>
-                <th scope="row">Color</th>
-                <td> <%= @alpaca.color %> </td>
-              </tr>
-              <tr>
-                <th scope="row">Owner</th>
-                <td><%= @alpaca.owner.first_name %> <%= @alpaca.owner.last_name  %></td>
-              </tr>
-              <% if @alpaca.owner == current_user %>
-              <tr>
-                <th scope="row"><%= link_to "Edit",  edit_alpaca_path(@alpaca)%></th>
-              </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div class="card border-0 m-auto col-lg-6 col-sx-8 mt-4">
-        <div style="width: 100%; height: 600px;"
-          data-controller="mapbox"
-          data-mapbox-markers-value="<%= @markers.to_json %>"
-          data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-        </div>
-        <%# <div class="card border-0 bg-dark col-6 mt-4 m-auto">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png" class="card-img rounded" alt="...">
-          <div class="card-img-overlay d-flex justify-content-center align-items-center">
-            <h5 class="text-white">Eating Grass</h5>
           </div>
+          <div class="card border-0 bg-dark col-6 mt-3 mb-3 m-auto">
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png" class="card-img rounded" alt="...">
+            <div class="card-img-overlay d-flex justify-content-center align-items-center">
+              <h5 class="text-white">Producing Wool</h5>
+            </div>
+          </div> %>
         </div>
-        <div class="card border-0 bg-dark col-6 mt-3 mb-3 m-auto">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png" class="card-img rounded" alt="...">
-          <div class="card-img-overlay d-flex justify-content-center align-items-center">
-            <h5 class="text-white">Producing Wool</h5>
-          </div>
-        </div> %>
       </div>
-    </div>
-    <div class="bg-white p-3 sticky-top m-auto col-lg-3 mt-3">
+      <div class="bg-white p-3 sticky-date-picker m-auto col-lg-4 mt-3">
 
-      <div class="d-flex justify-content-between mt-3">
-        <p><strong>Price per Day</strong></p>
-        <p><%= @alpaca.price_per_day%>€</p>
+        <div class="d-flex justify-content-between mt-3">
+          <p><strong>Price per Day</strong></p>
+          <p><%= @alpaca.price_per_day%>€</p>
+        </div>
+        <hr>
+        <%= render "bookings/form", alpaca: @alpaca, booking: @booking %>
       </div>
-      <hr>
-      <%= render "bookings/form", alpaca: @alpaca, booking: @booking %>
     </div>
   </div>
-</div>
+<%# </div> %>

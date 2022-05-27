@@ -1,0 +1,13 @@
+// .pattern {
+//   background-color: #ffffff;
+//   opacity: 0.5;
+//   background-image: radial-gradient(#57B8FF 0.5px, #ffffff 0.5px);
+//   background-size: 10px 10px;
+//   z-index: -1000;
+// }
+
+.sticky-date-picker {
+  position: sticky;
+  z-index: 1;
+  top: 72px;
+}
