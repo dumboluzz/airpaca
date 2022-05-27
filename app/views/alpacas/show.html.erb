@@ -67,6 +67,11 @@
                 <th scope="row">Owner</th>
                 <td><%= @alpaca.owner.first_name %> <%= @alpaca.owner.last_name  %></td>
               </tr>
+              <% if @alpaca.owner == current_user %>
+              <tr>
+                <th scope="row"><%= link_to "Edit",  edit_alpaca_path(@alpaca)%></th>
+              </tr>
+              <% end %>
             </tbody>
           </table>
         </div>
