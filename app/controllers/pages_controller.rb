@@ -1,7 +1,6 @@
 class PagesController < ApplicationController
   def home
-    @alpacas = Alpaca.first(3)
-
+    @alpacas = Alpaca.first(3)  
     @alpacas_map = Alpaca.all
     @markers = @alpacas_map.geocoded.map do |alpaca|
       {
