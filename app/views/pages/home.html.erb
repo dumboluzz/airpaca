@@ -11,8 +11,8 @@
 <div class="container">
   <h1>Our top alpacas:</h1>
   <div class="row g-4 gx-4">
-    <% @alpacas.each do |alpaca| %>
-      <div class="col-4">
+    <% @alpacas.each_with_index do |alpaca, i| %>
+      <div class="col-4" style="margin-top: <%= (i+1)*25 %>px;">
         <%= render "shared/alpaca_card", alpaca: alpaca %>
       </div>
     <% end %>

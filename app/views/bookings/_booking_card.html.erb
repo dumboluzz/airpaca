@@ -20,7 +20,11 @@
           <%= booking.alpaca.name %>
         </div>
         <div class="col-2 text-truncate">
-          <%= booking.renter.first_name.capitalize %> <%= booking.renter.last_name.capitalize %>
+          <% if booking.renter == current_user %>
+            <%= booking.owner.first_name %> <%= booking.owner.last_name %>
+          <% else %>
+            <%= booking.renter.first_name %> <%= booking.renter.last_name %>
+          <% end %>
         </div>
         <% if booking.status == "pending" %>
           <% if booking.owner == current_user %>
