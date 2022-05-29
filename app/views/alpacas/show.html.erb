@@ -71,7 +71,8 @@
                 </tr>
                 <% if @alpaca.owner == current_user %>
                 <tr>
-                  <th scope="row"><%= link_to "Edit",  edit_alpaca_path(@alpaca)%></th>
+                  <th><%= link_to "Edit", edit_alpaca_path(@alpaca)%></th>
+                  <th><%= link_to "Delete", alpaca_path(@alpaca), method: :delete%></th>
                 </tr>
                 <% end %>
               </tbody>

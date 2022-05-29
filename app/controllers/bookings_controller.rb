@@ -4,6 +4,7 @@ class BookingsController < ApplicationController
   before_action :set_booking, only: [:accept, :reject]
 
   def index
+    skip_policy_scope
     @pending = current_user.bookings.where(status: "pending").order(:start_date)
     @history = current_user.bookings.where.not(status: "pending").order(updated_at: :desc)
     @owner_pending = current_user.owner_bookings.where(status: "pending").order(:start_date)
@@ -12,12 +13,13 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
+    @booking.alpaca = @alpaca
+    authorize @booking
     unless @booking.start_date && @booking.end_date
       flash.alert = "Enter your dates"
       render "alpacas/show"
       return
     end
-    @booking.alpaca = @alpaca
     @booking.renter = current_user
     duration = (@booking.end_date - @booking.start_date).to_i
     if duration.negative?
@@ -30,19 +32,22 @@ class BookingsController < ApplicationController
       @booking.full_price = duration * @alpaca.price_per_day
     end
     if @booking.save
-      redirect_to bookings_path, notice: "Booking successfull"
+      flash[:success] = "Booking successfull"
+      redirect_to bookings_path
     else
       render "alpacas/show"
     end
   end
 
   def accept
+    authorize @booking
     @booking.status = "accepted"
     @booking.save
     redirect_to bookings_path
   end
 
   def reject
+    authorize @booking
     @booking.status = "rejected"
     @booking.save
     redirect_to bookings_path

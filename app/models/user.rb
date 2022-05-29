@@ -7,5 +7,5 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   has_many :alpacas, dependent: :destroy
   has_many :bookings, dependent: :destroy # as renter
-  has_many :owner_bookings, through: :alpacas, source: :bookings, dependent: :destroy # as owner
+  has_many :owner_bookings, through: :alpacas, source: :bookings # as owner
 end

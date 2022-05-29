@@ -37,6 +37,7 @@ gem "faker", "~> 2.21"
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'cloudinary', '~> 1.16.0'
 gem "geocoder"
+gem 'pundit'
 
 group :development, :test do
   gem 'pry-byebug'
